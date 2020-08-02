@@ -1,0 +1,1 @@
+java -jar excel2sql-tools-1.0-SNAPSHOT.jar
