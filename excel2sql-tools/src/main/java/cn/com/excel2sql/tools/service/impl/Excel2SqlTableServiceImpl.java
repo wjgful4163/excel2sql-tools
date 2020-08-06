@@ -128,7 +128,9 @@ public class Excel2SqlTableServiceImpl implements Excel2SqlTableService {
 
                                 if (isNumeric(sixCell)) {
                                     defaultValue = "DEFAULT " + Double.valueOf(sixCell).intValue();
-                                } else {
+                                } else if("AUTO_INCREMENT".equals(sixCell.toUpperCase())){
+                                    defaultValue = "NOT NULL  AUTO_INCREMENT" ;
+                                }else{
                                     defaultValue = "DEFAULT " + sixCell;
                                 }
                             } else {
@@ -140,11 +142,14 @@ public class Excel2SqlTableServiceImpl implements Excel2SqlTableService {
 
                         }
                         sb.append(StringUtils.rightPad(defaultValue, 30, ""));
-                        sb.append("COMMENT ");
-                        sb.append("'");
-                        //第二列表示 字段含义（中文解释）
-                        sb.append(row.getCell(2).toString());
-                        sb.append("',");
+                        if(row.getCell(2)!=null){
+                            sb.append("COMMENT ");
+                            sb.append("'");
+                            //第二列表示 字段含义（中文解释）
+                            sb.append(row.getCell(2).toString());
+                            sb.append("'");
+                        }
+                        sb.append(",");
                         sb.append("\n");
                     }
 

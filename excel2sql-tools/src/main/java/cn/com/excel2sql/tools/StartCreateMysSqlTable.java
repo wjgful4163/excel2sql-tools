@@ -36,8 +36,8 @@ public class StartCreateMysSqlTable implements ApplicationRunner {
     private void dealAllFile() {
         System.out.println("start dealAllFile...");
         //List<String> allFilePathList = FileUtil.getFolderAllFile(directoryPathConfig.getDirectoryPath(), false);
-        //String directoryPath = directoryPathConfig.getDirectoryPath();
-        String directoryPath = "G:/test/aaa";
+        String directoryPath = directoryPathConfig.getDirectoryPath();
+
         List<String> allFilePathList = FileUtil.getFolderAllFile(directoryPath, false);
         for (String filePath : allFilePathList) {
             try {
